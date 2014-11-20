@@ -3,5 +3,7 @@
 
 <h2>Локации</h2>
 <p>
-  <a href="admin/spb">spb</a>
+  <% for location in @locations %>
+    <a href="<%=location_url(location)%>"><%=location.name%></a>
+  <% end %>
 </p>

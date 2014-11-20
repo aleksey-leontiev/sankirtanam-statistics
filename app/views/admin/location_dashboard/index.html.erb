@@ -4,7 +4,7 @@
 <h2>События</h2>
 <p>
   <% for event in @events %>
-    <a href="<%=event_url(event)%>">spb</a>
+    <a href="<%=event_url(event)%>"><%=event.name%></a>
   <% end %>
 </p>
 

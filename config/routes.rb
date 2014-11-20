@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   get 'admin/:location' => 'admin/location_dashboard#index'
   get 'admin/:location/:event' => 'admin/event_dashboard#index'
 
+  post 'admin/:location/:event' => 'admin/event_dashboard#save'
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

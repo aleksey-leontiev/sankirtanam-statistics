@@ -1,1 +1,13 @@
 <h1>Администрирование события "<%=@event.name%>" для локации "<%=@location.name%>"</h1>
+
+<div id="table"
+     style="width:750px;overflow: scroll"
+     data-records="<%=@records.to_json%>"
+     data-people="<%=@people.to_json%>"></div>
+<div id="save"
+    data-location="<%=@location.url%>"
+    data-event="<%=@event.url%>">Save</div>
+
+<script>
+  App.Admin.EventDashboardController.run();
+</script>

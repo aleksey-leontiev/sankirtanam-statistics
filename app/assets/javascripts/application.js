@@ -13,4 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require jquery.handsontable.full.min
+//= require app
 //= require_tree .

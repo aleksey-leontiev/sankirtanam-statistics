@@ -24,6 +24,13 @@ ActiveRecord::Schema.define(version: 20141120090320) do
     t.string "url"
   end
 
+  create_table "people", force: true do |t|
+    t.string  "name"
+    t.integer "location_id"
+  end
+
+  add_index "people", ["location_id"], name: "index_people_on_location_id"
+
   create_table "record_types", force: true do |t|
     t.string "name"
   end
@@ -31,10 +38,12 @@ ActiveRecord::Schema.define(version: 20141120090320) do
   create_table "records", force: true do |t|
     t.integer "type_id"
     t.integer "report_id"
+    t.integer "person_id"
     t.string  "value"
     t.integer "day"
   end
 
+  add_index "records", ["person_id"], name: "index_records_on_person_id"
   add_index "records", ["report_id"], name: "index_records_on_report_id"
   add_index "records", ["type_id"], name: "index_records_on_type_id"
 
