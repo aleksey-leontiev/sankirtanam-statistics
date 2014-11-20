@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
-  namespace :admin do
-  get 'dashboard/index'
-  end
+  get 'admin/' => 'admin/dashboard#index'
+  get 'admin/:location' => 'admin/location_dashboard#index'
 
-  get 'admin' => 'admin/dashboard#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
