@@ -1,4 +1,6 @@
 class Admin::EventDashboardController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     param_location = params[:location]
     param_event    = params[:event]

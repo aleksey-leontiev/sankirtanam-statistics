@@ -1,4 +1,6 @@
 class Admin::LocationDashboardController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     param_location = params[:location]
 

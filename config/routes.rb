@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   get 'admin/' => 'admin/dashboard#index'
   get 'admin/:location' => 'admin/location_dashboard#index'
   get 'admin/:location/:event' => 'admin/event_dashboard#index'
