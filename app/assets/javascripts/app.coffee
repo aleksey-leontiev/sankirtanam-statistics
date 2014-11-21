@@ -19,6 +19,7 @@ App.Admin.EventDashboardController = {
         minSpareRows: 1
         colHeaders: true
         contextMenu: true
+        colWidths: [250]
         colHeaders: me.column_headers()
         columns: me.columns()
         fixedColumnsLeft: 1

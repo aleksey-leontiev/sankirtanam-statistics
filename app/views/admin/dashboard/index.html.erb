@@ -2,8 +2,12 @@
 <p>На этой странице вы можете администрировать доступные Вам локации.</p>
 
 <h2>Локации</h2>
-<p>
-  <% for location in @locations %>
-    <a href="<%=location_url(location)%>"><%=location.name%></a>
+<%if @locations.count > 0 %>
+  <p>
+    <% for location in @locations %>
+      <a href="<%=location_url(location)%>"><%=location.name%></a>
   <% end %>
-</p>
+  </p>
+<% else %>
+  <p>У вас нет доступа ни к одной локации, обратитесь к администратору.</p>
+<% end %>
