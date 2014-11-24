@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'admin/:location/:event' => 'admin/event_dashboard#index'
 
   get ':event' => 'reports/event_report#index'
+  get ':event/:location' => 'reports/event_report#index'
 
   post 'admin/:location/:event' => 'admin/event_dashboard#save'
 

@@ -92,6 +92,8 @@ App.EventReportController = {
       sortAscending: false
 
   drawChartLocation: ->
+    c = $("#chart_location")
+    if c.size() == 0 then return
     records = $("#chart_location").data("records")
     data = new google.visualization.DataTable()
     data.addColumn "string", "Имя"

@@ -1,7 +1,20 @@
-<h1><%=@event.name%></h1>
+<div class="page-header">
+  <h1><%=@event.name%>
+    <% if @location != nil %>
+      <small><%=@location.name%></small>
+    <% end %>
+  </h1>
+</div>
 
+<a href="/<%=@event.url%>">Все</a>
+<% for location in @locations %>
+<a href="/<%=@event.url%>/<%=location.url%>"><%=location.name%></a>
+<% end %>
+
+<% if @location == nil %>
 <h2>Количество книг по локациям</h2>
 <div id="chart_location" data-records="<%= @data_location.to_json %>" class="chart"></div>
+<% end %>
 
 <h2>Лидеры</h2>
 <div id="chart_person" data-records="<%= @data_person.to_json %>" class="chart"></div>
