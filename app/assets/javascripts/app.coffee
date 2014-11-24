@@ -32,7 +32,7 @@ App.Admin.EventDashboardController = {
   save: (data, location, event) ->
     json = { data: JSON.stringify(data) }
     $.post "/admin/"+location+"/"+event, json, ->
-      alert("done")
+      alert("Сохранено")
 
   column_headers: () ->
     ["Имя",
