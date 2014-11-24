@@ -52,3 +52,62 @@ App.Admin.EventDashboardController = {
     }
     return result
 }
+
+App.EventReportController = {
+  dv: null
+  table: null
+
+  run: ->
+    me = App.EventReportController
+    google.load("visualization", "1", {packages:["table", "corechart"]});
+    google.setOnLoadCallback(() ->
+      me.drawTable(1)
+      me.drawChartLocation()
+      me.drawChartPerson()
+    );
+    $(".pager").click(() -> me.drawTable($(this).data("page")))
+
+  drawTable: (week) ->
+    me = App.EventReportController
+    records = $("#table").data("records")
+    data = new google.visualization.DataTable()
+    data.addColumn "string", "Имя"
+    data.addColumn "string", "Город"
+    for i in [1..31]
+      data.addColumn "number", ("00" + i).slice(-2)
+    data.addColumn "number", "Количество"
+    data.addRows(records)
+    view = new google.visualization.DataView(data)
+    s = (week*7)-7
+    e = (week)*7
+    if week == 5
+      e = 31
+      s = 31 - 7
+    for i in [0..30]
+      if i<s || i>=e
+        view.hideColumns([2+i])
+    table = new google.visualization.Table(document.getElementById("table"))
+    table.draw view,
+      sortColumn: 9
+      sortAscending: false
+
+  drawChartLocation: ->
+    records = $("#chart_location").data("records")
+    data = new google.visualization.DataTable()
+    data.addColumn "string", "Имя"
+    data.addColumn "number", "Количество"
+    data.addRows(records)
+    table = new google.visualization.BarChart(document.getElementById("chart_location"))
+    table.draw data,
+      legend: {position: 'none'}
+
+  drawChartPerson: ->
+    records = $("#chart_person").data("records")
+    data = new google.visualization.DataTable()
+    data.addColumn "string", "Имя"
+    data.addColumn "number", "Количество"
+    data.addRows(records)
+    table = new google.visualization.BarChart(document.getElementById("chart_person"))
+    table.draw data,
+      legend: {position: 'none'}
+}

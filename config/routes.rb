@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
+  namespace :reports do
+  get 'event_report/index'
+  end
+
   devise_for :users
   get 'admin/' => 'admin/dashboard#index'
   get 'admin/:location' => 'admin/location_dashboard#index'
   get 'admin/:location/:event' => 'admin/event_dashboard#index'
+
+  get ':event' => 'reports/event_report#index'
 
   post 'admin/:location/:event' => 'admin/event_dashboard#save'
 

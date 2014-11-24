@@ -1,0 +1,22 @@
+<h1><%=@event.name%></h1>
+
+<h2>Количество книг по локациям</h2>
+<div id="chart_location" data-records="<%= @data_location.to_json %>" class="chart"></div>
+
+<h2>Лидеры</h2>
+<div id="chart_person" data-records="<%= @data_person.to_json %>" class="chart"></div>
+
+<h2>Количество книг по дням</h2>
+<center>
+<div class="btn-group btn-group-xs" role="group" aria-label="...">
+  <% for i in 1..5 %>
+      <button type="button" class="btn btn-default pager" data-page="<%=i%>">Неделя <%=i%></button>
+  <% end %>
+</div>
+</center>
+
+<div id="table" data-records="<%= @data_table.to_json %>" class="chart"></div>
+
+<script>
+  App.EventReportController.run();
+</script>
