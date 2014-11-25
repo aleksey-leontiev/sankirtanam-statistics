@@ -1,14 +1,48 @@
 <h1><%=@location.name%></h1>
 <p>На этой странице вы можете администрировать отчеты локации.</p>
 
-<h2>События</h2>
-<p>
-  <% for event in @events %>
-    <a href="<%=event_url(event)%>"><%=event.name%></a>
-  <% end %>
-</p>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">События</h3>
+  </div>
+  <div class="panel-body">
+    <ul class="nav nav-pills">
+      <% for event in @events %>
+        <li role="presentation">
+          <a href="<%=event_url(event)%>"><%=event.name%>
+            <% if @sum.has_key?("event:#{event.url}") %>
+              <span class="badge"><%=@sum["event:#{event.url}"]%></span>
+            <% end %>
+          </a>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
 
-<h2>Периоды</h2>
-<p>
-  <a href="#">Январь</a>
-</p>
+<% for year in (@year-1)..(@year+1) %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%=year%> год</h3>
+  </div>
+  <div class="panel-body">
+    <ul class="nav nav-pills">
+
+        <ul class="nav nav-pills">
+          <% for month in 1..12 %>
+            <li role="presentation">
+              <a href="#">
+                <%=@months[month]%>
+                <% if @sum.has_key?("#{year}:#{month}") %>
+                  <span class="badge"><%=@sum["#{year}:#{month}"]%></span>
+                <% end %>
+              </a>
+            </li>
+          <% end %>
+        </ul>
+
+    </ul>
+  </div>
+</div>
+
+<% end %>
