@@ -1,4 +1,8 @@
-<h1><%=@location.name%> :: <%=@event.name%></h1>
+<ol class="breadcrumb">
+  <li><a href="/admin">Администрирование</a></li>
+  <li><a href="/admin/<%=@location.url%>"><%=@location.name%></a></li>
+  <li class="active"><%=@event.name%></li>
+</ol>
 <p>На этой странице вы можете заполнить результаты для данного события.</p>
 
 <div id="table"

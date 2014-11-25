@@ -1,13 +1,23 @@
-<h1>Страница администратора</h1>
+<ol class="breadcrumb">
+  <li class="active">Администрирование</li>
+</ol>
 <p>На этой странице вы можете администрировать доступные Вам локации.</p>
 
-<h2>Локации</h2>
-<%if @locations.count > 0 %>
-  <p>
-    <% for location in @locations %>
-      <a href="<%=location_url(location)%>"><%=location.name%></a>
-  <% end %>
-  </p>
-<% else %>
-  <p>У вас нет доступа ни к одной локации, обратитесь к администратору.</p>
-<% end %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Локации</h3>
+  </div>
+  <div class="panel-body">
+
+    <%if @locations.count > 0 %>
+      <ul class="nav nav-pills">
+        <% for location in @locations %>
+          <li role="presentation"><a href="<%=location_url(location)%>"><%=location.name%></a></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>У вас нет доступа ни к одной локации, обратитесь к администратору.</p>
+    <% end %>
+
+  </div>
+</div>
