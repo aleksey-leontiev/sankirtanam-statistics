@@ -113,3 +113,52 @@ App.EventReportController = {
     table.draw data,
       legend: {position: 'none'}
 }
+
+App.Admin.MonthlyReportDashboardController = {
+  run: ->
+    me = App.Admin.MonthlyReportDashboardController
+    $(document).ready ->
+      data = $("#table").data("records")
+      if data.length == 0
+        data = [["", null]]
+
+      $("#save").click ->
+        records  = $("#table").handsontable('getData')
+        location = $(this).data("location")
+        year    = $(this).data("year")
+        month   = $(this).data("month")
+        me.save(records, location, year, month)
+
+      $("#table").handsontable
+        data: data
+        minSpareRows: 1
+        colHeaders: true
+        contextMenu: true
+        colWidths: [250]
+        colHeaders: me.column_headers()
+        columns: me.columns()
+        stretchH: 'all'
+
+      hot = $("#table").handsontable('getInstance')
+      hot.updateSettings()
+
+
+  save: (data, location, year, month) ->
+    json = { data: JSON.stringify(data) }
+    $.post "/admin/"+location+"/"+year+"/"+month, json, ->
+      alert("Сохранено")
+
+  column_headers: () ->
+    ["Имя", "Махабиги", "Биги", "Средние", "Малые",  "Количество", "Очки"]
+
+  columns: () ->
+    me = App.Admin.MonthlyReportDashboardController
+    people    = $("#table").data("people")
+    result    = me.column_headers()
+    result[0] = {
+      type:   'autocomplete',
+      source: people,
+      strict: false
+    }
+    return result
+}

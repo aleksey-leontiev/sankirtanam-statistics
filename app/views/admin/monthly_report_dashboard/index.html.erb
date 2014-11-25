@@ -1,2 +1,15 @@
-<h1>Admin::MonthlyReportDashboard#index</h1>
-<p>Find me in app/views/admin/monthly_report_dashboard/index.html.erb</p>
+<h1><%=@location.name%> :: <%=@year%> :: <%=@month%></h1>
+<p>На этой странице вы можете заполнить результаты для данного события.</p>
+
+<div id="table"
+     style="width:100%;overflow: scroll"
+     data-records="<%=@records.to_json%>"
+     data-people="<%=@people.to_json%>"></div>
+<div id="save" class="btn btn-primary"
+     data-location="<%=@location.url%>"
+     data-year="<%=@year%>"
+     data-month="<%=@month%>">Сохранить</div>
+
+<script>
+    App.Admin.MonthlyReportDashboardController.run();
+</script>
