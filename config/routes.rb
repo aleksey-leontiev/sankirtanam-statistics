@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :admin do
+  get 'monthly_report_dashboard/index'
+  end
+
   namespace :reports do
   get 'event_report/index'
   end
@@ -7,6 +11,7 @@ Rails.application.routes.draw do
   get 'admin/' => 'admin/dashboard#index'
   get 'admin/:location' => 'admin/location_dashboard#index'
   get 'admin/:location/:event' => 'admin/event_dashboard#index'
+  get 'admin/:location/:year/:month' => 'admin/monthly_report_dashboard#index'
 
   get ':event' => 'reports/event_report#index'
   get ':event/:location' => 'reports/event_report#index'

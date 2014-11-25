@@ -31,7 +31,7 @@
         <ul class="nav nav-pills">
           <% for month in 1..12 %>
             <li role="presentation">
-              <a href="#">
+              <a href="<%=monthly_report_url(year, month)%>">
                 <%=@months[month]%>
                 <% if @sum.has_key?("#{year}:#{month}") %>
                   <span class="badge"><%=@sum["#{year}:#{month}"]%></span>

@@ -1,0 +1,2 @@
+module Admin::MonthlyReportDashboardHelper
+end
