@@ -61,7 +61,7 @@ App.EventReportController = {
     me = App.EventReportController
     google.load("visualization", "1", {packages:["table", "corechart"]});
     google.setOnLoadCallback(() ->
-      me.drawTable(1)
+      #me.drawTable(1)
       me.drawChartLocation()
       me.drawChartPerson()
     );

@@ -6,29 +6,73 @@
   </h1>
 </div>
 
-<a href="/<%=@event.url%>">Все</a>
-<% for location in @locations %>
-<a href="/<%=@event.url%>/<%=location.url%>"><%=location.name%></a>
-<% end %>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <ul class="nav nav-pills">
+      <li role="presentation" class="<%=@location == nil ? 'active' : ''%>"><a href="/<%=@event.url%>">Все</a></li>
+      <% for location in @locations %>
+        <li role="presentation" class="<%=location_nav_class(location)%>">
+          <a href="/<%=@event.url%>/<%=location.url%>"><%=location.name%></a>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
 
 <% if @location == nil %>
-<h2>Количество книг по локациям</h2>
-<div id="chart_location" data-records="<%= @data_location.to_json %>" class="chart"></div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Количество книг по локациям</h3>
+    </div>
+    <div class="panel-body">
+      <div id="chart_location" data-records="<%= @data_location.to_json %>" class="chart"></div>
+    </div>
+  </div>
 <% end %>
 
-<h2>Лидеры</h2>
-<div id="chart_person" data-records="<%= @data_person.to_json %>" class="chart"></div>
 
-<h2>Количество книг по дням</h2>
-<center>
-<div class="btn-group btn-group-xs" role="group" aria-label="...">
-  <% for i in 1..5 %>
-      <button type="button" class="btn btn-default pager" data-page="<%=i%>">Неделя <%=i%></button>
-  <% end %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Лидеры</h3>
+  </div>
+  <div class="panel-body">
+    <div id="chart_person" data-records="<%= @data_person.to_json %>" class="chart"></div>
+  </div>
 </div>
-</center>
 
-<div id="table" data-records="<%= @data_table.to_json %>" class="chart"></div>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Количество книг по дням</h3>
+  </div>
+  <!--
+  <div class="panel-body">
+    <div id="table" data-records="<%= @data_table.to_json %>" class="chart"></div>
+  </div>-->
+  <div style="overflow-x: scroll">
+  <table class="table table-condensed table-striped table-hover">
+    <thead>
+      <tr>
+        <th style="white-space:nowrap;">Имя</th>
+        <th style="white-space:nowrap;">Город</th>
+        <% for i in 1..31 %>
+          <th><%=i%></th>
+        <% end %>
+      </tr>
+    </thead>
+
+    <% for record in @data_table %>
+      <tr>
+        <% for v in record %>
+          <td style="white-space: nowrap"><%=v%></td>
+        <% end %>
+      </tr>
+    <% end %>
+
+  </table>
+  </div>
+</div>
+
+
 
 <script>
   App.EventReportController.run();
