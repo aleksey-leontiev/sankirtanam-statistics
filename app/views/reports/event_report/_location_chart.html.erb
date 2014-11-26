@@ -1,0 +1,10 @@
+<% if @location == nil %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Количество книг по локациям</h3>
+      </div>
+      <div class="panel-body">
+        <div id="chart_location" data-records="<%= @data_location.to_json %>" class="chart"></div>
+      </div>
+    </div>
+<% end %>

@@ -1,0 +1,15 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <ul class="nav nav-pills">
+      <li role="presentation" class="<%=@location == nil ? 'active' : ''%>">
+        <a href="/<%=@event.url%>">Все</a>
+      </li>
+
+      <% for location in @locations %>
+        <li role="presentation" class="<%=location_nav_class(location)%>">
+          <a href="/<%=@event.url%>/<%=location.url%>"><%=location.name%></a>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

@@ -37,6 +37,8 @@ class Reports::EventReportController < ApplicationController
     @location      = location
     @locations     = locations
     @data_table    = data_table.map{ |x,y| y }
+                         .sort{|x,y| x[33] <=> y[33] }
+                         .reverse
     @data_location = data_location.map{ |x,y| [x,y] }
                          .sort{|x,y| x[1] <=> y[1]}
                          .reverse
