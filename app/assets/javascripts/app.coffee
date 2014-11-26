@@ -149,7 +149,7 @@ App.Admin.MonthlyReportDashboardController = {
       alert("Сохранено")
 
   column_headers: () ->
-    ["Имя", "Махабиги", "Биги", "Средние", "Малые",  "Количество", "Очки"]
+    ["Имя", "Махабиги", "Биги", "Средние", "Малые"]
 
   columns: () ->
     me = App.Admin.MonthlyReportDashboardController

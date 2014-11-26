@@ -5,7 +5,8 @@ class Admin::MonthlyReportDashboardController < Admin::AdminLocationController
     param_month    = params[:month]
 
     @location = Location.find_by_url(param_location)
-    @report   = Report.where(location: @location).where(year: param_year).where(month: param_month).where(event: nil).first
+    @reports  = Report.where(location: @location).where(year: param_year).where(month: param_month)
+    @report   = @reports.where(event: nil).first
     @people   = Person.where(location: @location).map{|x| x.name}
     records  = {}
 

@@ -3,7 +3,20 @@
   <li><a href="/admin/<%=@location.url%>"><%=@location.name%></a></li>
   <li class="active"><%=@month%>-<%=@year%></li>
 </ol>
-<p>На этой странице вы можете заполнить результаты для данного события.</p>
+<p>
+  На этой странице вы можете заполнить результаты для данного события.
+  Малая: 50-149 страниц. Средняя: 150-299. Большая: 300-499. Махабига: более 500 страниц.
+</p>
+
+<% if @reports.count > 1 %>
+<div class="alert alert-info" role="alert">
+  Часть данных записана в других отчетах:
+  <% for report in @reports %>
+    <% if report == @report then next end %>
+    <a href="<%=other_report_url(report)%>"><%= other_report_name(report) %></a>
+  <% end %>
+</div>
+<% end %>
 
 <div id="table"
      style="width:100%;overflow: scroll"
