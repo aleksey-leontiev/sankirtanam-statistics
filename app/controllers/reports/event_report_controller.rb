@@ -22,8 +22,8 @@ class Reports::EventReportController < ApplicationController
       id   = param_location == nil ? "#{name} (#{lcn})" : "#{name}"
 
       r = (data_table[id] ||= empty_row(name, lcn))
-      r[record.day+1] += record.value.to_i
-      r[33] += record.value.to_i
+      r[record.day+2] += record.value.to_i
+      r[2] += record.value.to_i
 
       data_location[lcn] ||= 0
       data_location[lcn] += record.value.to_i
@@ -37,7 +37,7 @@ class Reports::EventReportController < ApplicationController
     @location      = location
     @locations     = locations
     @data_table    = data_table.map{ |x,y| y }
-                         .sort{|x,y| x[33] <=> y[33] }
+                         .sort{|x,y| x[2] <=> y[2] }
                          .reverse
     @data_location = data_location.map{ |x,y| [x,y] }
                          .sort{|x,y| x[1] <=> y[1]}
