@@ -5,9 +5,9 @@ class Reports::EventReportController < ApplicationController
     param_location = params[:location]
 
     # output parameters
-    data_table = {}
+    data_table    = {}
     data_location = {}
-    data_person = {}
+    data_person   = {}
 
     # fetch additional data
     event     = fetch_event(param_event)
