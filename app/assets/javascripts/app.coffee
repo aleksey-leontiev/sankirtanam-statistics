@@ -162,3 +162,9 @@ App.Admin.MonthlyReportDashboardController = {
     }
     return result
 }
+
+$(document).ready ->
+  embedded = $('body').data("embedded")
+  if embedded
+    $("a").each ->
+      $(this).attr "href", $(this).attr("href") + "?embedded=true"
