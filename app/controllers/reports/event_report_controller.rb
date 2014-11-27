@@ -12,7 +12,7 @@ class Reports::EventReportController < ApplicationController
     # fetch additional data
     event     = fetch_event(param_event)
     records   = fetch_records(param_event, param_location)
-    locations = [] #Location.all
+    locations = Location.all
     location  = Location.find_by_url(param_location)
 
     # process records
@@ -21,8 +21,8 @@ class Reports::EventReportController < ApplicationController
       report = record.report
       lc     = report.location
       lcn    = report.location.name
-      id   = param_location == nil ? "#{name} (#{lcn})" : "#{name}"
-      locations << lc if !locations.include?(lc)
+      id     = param_location == nil ? "#{name} (#{lcn})" : "#{name}"
+      #locations << lc if !locations.include?(lc)
 
       r = (data_table[id] ||= empty_row(name, lcn))
       r[record.day+2] += record.value.to_i
