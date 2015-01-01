@@ -6,7 +6,7 @@ App.Admin.EventDashboardController = {
     $(document).ready ->
       data = $("#table").data("records")
       if data.length == 0
-        data = [["", null]]#[column_headers()]#[["",  null,  null,  null,  null,  null,  null,  null]]
+        data = [["", null]]
 
       $("#save").click ->
         records  = $("#table").handsontable('getData')
@@ -39,7 +39,7 @@ App.Admin.EventDashboardController = {
       "1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
       "11","12","13","14","15","16","17","18","19","20",
       "21","22","23","24","25","26","27","28","29","30",
-      "31", "Количество"]
+      "31", "Количество", "Очки"]
 
   columns: () ->
     me = App.Admin.EventDashboardController
@@ -66,6 +66,7 @@ App.EventReportController = {
       me.drawChartPerson()
     );
     $(".pager").click(() -> me.drawTable($(this).data("page")))
+    $(".table").tablesorter();
 
   drawTable: (week) ->
     me = App.EventReportController

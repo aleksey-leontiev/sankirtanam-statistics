@@ -98,3 +98,15 @@ body {
         border-bottom: 0;
     }
 }
+
+th.tablesorter-headerDesc {
+    color: #3399FF;
+}
+
+th.tablesorter-headerAsc {
+    color: #3399FF;
+}
+
+th.tablesorter-header {
+    cursor: pointer;
+}

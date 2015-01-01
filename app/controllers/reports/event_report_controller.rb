@@ -21,12 +21,14 @@ class Reports::EventReportController < ApplicationController
       report = record.report
       lc     = report.location
       lcn    = report.location.name
+      type   = record.type.name
       id     = param_location == nil ? "#{name} (#{lcn})" : "#{name}"
       #locations << lc if !locations.include?(lc)
 
       r = (data_table[id] ||= empty_row(name, lcn))
-      r[record.day+2] += record.value.to_i
-      r[2] += record.value.to_i
+      if type == "quantity" then r[record.day+3] += record.value.to_i end
+      if type == "scores"   then r[2] += record.value.to_i end
+      if type == "quantity" then r[3] += record.value.to_i end
 
       data_location[lcn] ||= 0
       data_location[lcn] += record.value.to_i
@@ -78,6 +80,6 @@ class Reports::EventReportController < ApplicationController
      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
      0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-     0, 0]
+     0, 0, 0]
   end
 end

@@ -40,3 +40,5 @@ gem 'capistrano', '~> 2.15.5'
 gem 'squeel'
 gem 'twitter-bootstrap-rails'
 gem 'devise'
+
+gem 'jquery-tablesorter'

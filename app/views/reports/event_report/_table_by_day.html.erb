@@ -1,14 +1,15 @@
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">Количество книг по дням</h3>
+    <h3 class="panel-title">Количество по дням</h3> (для сортировки щелкните по колонке)
   </div>
 
   <div style="overflow-x: scroll">
-    <table class="table table-hover">
+    <table class="table table-hover table-condensed tablesorter">
       <thead>
         <tr>
           <th style="white-space:nowrap;">Имя</th>
           <th style="white-space:nowrap;">Город</th>
+          <th style="white-space:nowrap;">Очки</th>
           <th style="white-space:nowrap;">Количество</th>
           <% for i in 1..31 %>
             <th><%=i%></th>

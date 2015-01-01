@@ -13,9 +13,12 @@ class Admin::EventDashboardController < Admin::AdminLocationController
       for record in @report.records
         r = (records[record.person.name] ||= [record.person.name])
 
-        r[record.day] = record.value
+        if record.type.name == 'quantity' then r[record.day] = record.value end
         r[32] ||= 0
-        r[32] += (record.value or 0).to_i
+        r[33] ||= 0
+
+        if record.type.name == 'quantity' then r[32] += (record.value or 0).to_i end
+        if record.type.name == 'scores' then r[33] += (record.value or 0).to_i end
       end
     end
 
@@ -34,6 +37,7 @@ class Admin::EventDashboardController < Admin::AdminLocationController
     location = Location.find_by_url(param_location)
     event    = Event.find_by_url(param_event)
     type     = RecordType.find_by_name('quantity')
+    scores   = RecordType.find_by_name('scores')
 
     # find or create report for specified
     # location and event
@@ -56,6 +60,8 @@ class Admin::EventDashboardController < Admin::AdminLocationController
         if record[day] == nil then next end
         Record.create(person: person, report:report, type: type, value: record[day], day:day)
       end
+
+      Record.create(person: person, report: report, type: scores, value: record[33])
       #Record.create(report: report, )
     end
 

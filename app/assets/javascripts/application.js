@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-tablesorter
 //= require twitter/bootstrap
 //= require jquery.handsontable.full.min
 //= require app
