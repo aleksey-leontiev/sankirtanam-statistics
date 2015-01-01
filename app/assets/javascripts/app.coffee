@@ -66,7 +66,7 @@ App.EventReportController = {
       me.drawChartPerson()
     );
     $(".pager").click(() -> me.drawTable($(this).data("page")))
-    $(".table").tablesorter();
+    $(".table").tablesorter({sortList: [[3,1]]});
 
   drawTable: (week) ->
     me = App.EventReportController
