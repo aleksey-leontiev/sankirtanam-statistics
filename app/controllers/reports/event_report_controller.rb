@@ -31,10 +31,10 @@ class Reports::EventReportController < ApplicationController
       if type == "quantity" then r[3] += record.value.to_i end
 
       data_location[lcn] ||= 0
-      data_location[lcn] += record.value.to_i
+      if type == "quantity" then data_location[lcn] += record.value.to_i end
 
       data_person[id] ||= 0
-      data_person[id] += record.value.to_i
+      if type == "quantity" then data_person[id] += record.value.to_i end
     end
 
     # export data to view
