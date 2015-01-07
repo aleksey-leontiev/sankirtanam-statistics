@@ -156,11 +156,11 @@ App.Admin.MonthlyReportDashboardController = {
     me = App.Admin.MonthlyReportDashboardController
     people    = $("#table").data("people")
     result    = me.column_headers()
-    result[0] = {
-      type:   'autocomplete',
-      source: people,
-      strict: false
-    }
+    #result[0] = {
+    #  type:   'autocomplete',
+    #  source: people,
+    #  strict: false
+    #}
     return result
 }
 
