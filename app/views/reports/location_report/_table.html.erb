@@ -1,0 +1,38 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"></h3>
+  </div>
+
+  <div style="overflow-x: scroll">
+    <table class="table table-hover table-condensed tablesorter">
+      <thead>
+        <tr>
+          <th style="white-space:nowrap;">Имя</th>
+          <th style="white-space:nowrap;">01</th>
+          <th style="white-space:nowrap;">02</th>
+          <th style="white-space:nowrap;">03</th>
+          <th style="white-space:nowrap;">04</th>
+          <th style="white-space:nowrap;">05</th>
+          <th style="white-space:nowrap;">06</th>
+          <th style="white-space:nowrap;">07</th>
+          <th style="white-space:nowrap;">08</th>
+          <th style="white-space:nowrap;">09</th>
+          <th style="white-space:nowrap;">10</th>
+          <th style="white-space:nowrap;">11</th>
+          <th style="white-space:nowrap;">12</th>
+          <th style="white-space:nowrap;">Количество</th>
+          <th style="white-space:nowrap;">Очки</th>
+        </tr>
+      </thead>
+
+      <% for record in @data_table %>
+        <tr>
+          <% for v in record %>
+            <td style="white-space: nowrap"><%=v%></td>
+          <% end %>
+        </tr>
+      <% end %>
+
+    </table>
+  </div>
+</div>
