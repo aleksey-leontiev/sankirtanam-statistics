@@ -8,10 +8,18 @@
       <thead>
         <tr>
           <th style="white-space:nowrap;">Локация</th>
-          <th style="white-space:nowrap;">Махабиги</th>
-          <th style="white-space:nowrap;">Биги</th>
-          <th style="white-space:nowrap;">Средние</th>
-          <th style="white-space:nowrap;">Малые</th>
+          <th style="white-space:nowrap;">01</th>
+          <th style="white-space:nowrap;">02</th>
+          <th style="white-space:nowrap;">03</th>
+          <th style="white-space:nowrap;">04</th>
+          <th style="white-space:nowrap;">05</th>
+          <th style="white-space:nowrap;">06</th>
+          <th style="white-space:nowrap;">07</th>
+          <th style="white-space:nowrap;">08</th>
+          <th style="white-space:nowrap;">09</th>
+          <th style="white-space:nowrap;">10</th>
+          <th style="white-space:nowrap;">11</th>
+          <th style="white-space:nowrap;">12</th>
           <th style="white-space:nowrap;">Количество</th>
           <th style="white-space:nowrap;">Очки</th>
         </tr>
@@ -19,13 +27,10 @@
 
       <% for record in @data_table %>
         <tr>
-          <td style="white-space:nowrap;"><a href="<%=location_year_path(record[7], @year)%>"><%= record[0]%></a></th>
-          <td style="white-space:nowrap;"><%= record[1]%></th>
-          <td style="white-space:nowrap;"><%= record[2]%></th>
-          <td style="white-space:nowrap;"><%= record[3]%></th>
-          <td style="white-space:nowrap;"><%= record[4]%></th>
-          <td style="white-space:nowrap;"><%= record[5]%></th>
-          <td style="white-space:nowrap;"><%= record[6]%></th>
+          <td style="white-space:nowrap;"><a href="<%=location_year_path(record[15], @year)%>"><%= record[0]%></a></th>
+          <% for i in 1..14 %>
+            <td style="white-space:nowrap;"><%= record[i]%></th>
+          <% end %>
         </tr>
       <% end %>
 

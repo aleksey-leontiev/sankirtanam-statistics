@@ -13,24 +13,25 @@ class Reports::OverallReportController < ApplicationController
     for record in records
       value  = record.value
       report = record.report
+      month  = report.month.to_i
       lcn    = report.location
       type   = record.type.name
 
       row = (data_table[lcn] ||= empty_row(lcn))
-      if type == "huge" then row[1]+=value.to_i end
-      if type == "big" then row[2]+=value.to_i end
-      if type == "medium" then row[3]+=value.to_i end
-      if type == "small" then row[4]+=value.to_i end
+      if type == "huge" then row[month]+=value.to_i end
+      if type == "big" then row[month]+=value.to_i end
+      if type == "medium" then row[month]+=value.to_i end
+      if type == "small" then row[month]+=value.to_i end
 
-      row[5] += value.to_i
-      row[6] += value.to_i * (type == "huge" ? 2 : type == "big" ? 1 : type == "medium" ? 0.5 : type == "small" ? "0.25" : 0).to_f
+      row[13] += value.to_i
+      row[14] += value.to_i * (type == "huge" ? 2 : type == "big" ? 1 : type == "medium" ? 0.5 : type == "small" ? "0.25" : 0).to_f
     end
 
     # export data to view
     @year          = param_year
     @location      = location
     @data_table    = data_table.map{ |x,y| y }
-                         .sort{|x,y| x[6] <=> y[6] }
+                         .sort{|x,y| x[14] <=> y[14] }
                          .reverse
   end
 
@@ -47,6 +48,6 @@ class Reports::OverallReportController < ApplicationController
   end
 
   def empty_row(location)
-    [location.name, 0, 0, 0, 0, 0, 0, location.url]
+    [location.name, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, location.url]
   end
 end
