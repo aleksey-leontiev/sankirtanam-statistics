@@ -18,6 +18,9 @@ Rails.application.routes.draw do
   get ':event' => 'reports/event_report#index'
   get ':event/:location' => 'reports/event_report#index'
 
+  get 'r/:location/:year/:month' => 'reports/monthly_report#index'
+  #get 'r/:location/:year/:month' => 'reports/monthly_report#index'
+
   post 'admin/:location/:event' => 'admin/event_dashboard#save'
   post 'admin/:location/:year/:month' => 'admin/monthly_report_dashboard#save'
 

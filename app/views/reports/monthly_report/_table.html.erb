@@ -1,0 +1,30 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"></h3>
+  </div>
+
+  <div style="overflow-x: scroll">
+    <table class="table table-hover table-condensed tablesorter">
+      <thead>
+        <tr>
+          <th style="white-space:nowrap;">Имя</th>
+          <th style="white-space:nowrap;">Махабиги</th>
+          <th style="white-space:nowrap;">Биги</th>
+          <th style="white-space:nowrap;">Средние</th>
+          <th style="white-space:nowrap;">Малые</th>
+          <th style="white-space:nowrap;">Количество</th>
+          <th style="white-space:nowrap;">Очки</th>
+        </tr>
+      </thead>
+
+      <% for record in @data_table %>
+        <tr>
+          <% for v in record %>
+            <td style="white-space: nowrap"><%=v%></td>
+          <% end %>
+        </tr>
+      <% end %>
+
+    </table>
+  </div>
+</div>
