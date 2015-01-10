@@ -11,25 +11,10 @@ class Reports::OverallReportController < ApplicationController
 
     # process records
     for record in records
-      #name   = record.person.name
       value  = record.value
       report = record.report
-      #lc     = report.location
-      lcn    = report.location.name
+      lcn    = report.location
       type   = record.type.name
-      #id     = param_location == nil ? "#{name} (#{lcn})" : "#{name}"
-      #locations << lc if !locations.include?(lc)
-
-      #r = (data_table[id] ||= empty_row(name, lcn))
-      #if type == "quantity" then r[record.day+3] += record.value.to_i end
-      #if type == "scores"   then r[2] += record.value.to_i end
-      #if type == "quantity" then r[3] += record.value.to_i end
-
-      #data_location[lcn] ||= 0
-      #if type == "quantity" then data_location[lcn] += record.value.to_i end
-
-      #data_person[id] ||= 0
-      #if type == "quantity" then data_person[id] += record.value.to_i end
 
       row = (data_table[lcn] ||= empty_row(lcn))
       if type == "huge" then row[1]+=value.to_i end
@@ -42,6 +27,7 @@ class Reports::OverallReportController < ApplicationController
     end
 
     # export data to view
+    @year          = param_year
     @location      = location
     @data_table    = data_table.map{ |x,y| y }
                          .sort{|x,y| x[6] <=> y[6] }
@@ -61,6 +47,6 @@ class Reports::OverallReportController < ApplicationController
   end
 
   def empty_row(location)
-    [location, 0, 0, 0, 0, 0, 0]
+    [location.name, 0, 0, 0, 0, 0, 0, location.url]
   end
 end

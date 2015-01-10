@@ -16,8 +16,8 @@ Rails.application.routes.draw do
   get 'admin/:location/:year/:month' => 'admin/monthly_report_dashboard#index'
 
   get 'r/:year' => 'reports/overall_report#index'
-  get 'r/:location/:year' => 'reports/location_report#index'
-  get 'r/:location/:year/:month' => 'reports/monthly_report#index'
+  get 'r/:location/:year' => 'reports/location_report#index', as: :location_year
+  get 'r/:location/:year/:month' => 'reports/monthly_report#index', as: :location_year_month
 
   get ':event' => 'reports/event_report#index'
   get ':event/:location' => 'reports/event_report#index'

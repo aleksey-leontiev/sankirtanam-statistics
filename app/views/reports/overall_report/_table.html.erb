@@ -19,9 +19,13 @@
 
       <% for record in @data_table %>
         <tr>
-          <% for v in record %>
-            <td style="white-space: nowrap"><%=v%></td>
-          <% end %>
+          <td style="white-space:nowrap;"><a href="<%=location_year_path(record[7], @year)%>"><%= record[0]%></a></th>
+          <td style="white-space:nowrap;"><%= record[1]%></th>
+          <td style="white-space:nowrap;"><%= record[2]%></th>
+          <td style="white-space:nowrap;"><%= record[3]%></th>
+          <td style="white-space:nowrap;"><%= record[4]%></th>
+          <td style="white-space:nowrap;"><%= record[5]%></th>
+          <td style="white-space:nowrap;"><%= record[6]%></th>
         </tr>
       <% end %>
 
